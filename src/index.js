@@ -258,7 +258,7 @@ class GameAnalytics {
     // If this is a regular event, then just queue the data.
     if (!/init|user/.test(type)) {
       // Verify the data.
-      if (!this._verify(type, body)) {
+      if (type !== 'session_end' && !this._verify(type, body)) {
         return;
       }
 
