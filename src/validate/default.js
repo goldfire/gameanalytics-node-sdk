@@ -93,16 +93,16 @@ module.exports = {
   sdk_version: {
     type: 'string',
     required: true,
-    pattern: /^(((ios|android|unity|unreal|corona|marmalade|xamarin|gamemaker|flash|cocos2d|javascript|tvos|uwp|wsa|buildbox|defold|cpp|mono|lumberyard|stingray|frvr|air|uwp_cpp|tizen|construct|godot|stencyl|fusion|nativescript) [0-9]{0,5}(\\.[0-9]{0,5}){0,2})|rest api v2)$/,
+    pattern: /^(((ios|android|unity|unreal|corona|marmalade|xamarin|gamemaker|flash|cocos2d|javascript|tvos|uwp|wsa|buildbox|defold|cpp|mono|lumberyard|stingray|frvr|air|uwp_cpp|tizen|construct|godot|stencyl|fusion|nativescript) [0-9]{0,5}(\.[0-9]{0,5}){0,2})|rest api v2)$/,
   },
   engine_version: {
     type: 'string',
     required: false,
-    pattern: /^(unity|unreal|corona|marmalade|xamarin|xamarin.ios|xamarin.android|xamarin.mac|gamemaker|flash|cocos2d|monogame|stingray|cryengine|buildbox|defold|lumberyard|frvr|construct|godot|stencyl|fusion|nativescript) [0-9]{0,5}(\\.[0-9]{0,5}){0,2}$/,
+    pattern: /^(unity|unreal|corona|marmalade|xamarin|xamarin.ios|xamarin.android|xamarin.mac|gamemaker|flash|cocos2d|monogame|stingray|cryengine|buildbox|defold|lumberyard|frvr|construct|godot|stencyl|fusion|nativescript) [0-9]{0,5}(\.[0-9]{0,5}){0,2}$/,
   },
   os_version: {
     type: 'string',
-    pattern: /^(ios|android|windows|windows_phone|blackberry|roku|tizen|nacl|mac_osx|tvos|webplayer|ps4|xboxone|uwp_mobile|uwp_desktop|uwp_console|uwp_iot|uwp_surfacehub|webgl|xbox360|ps3|psm|vita|wiiu|samsung_tv|linux|watch_os) [0-9]{0,5}(\\.[0-9]{0,5}){0,2}$/,
+    pattern: /^(ios|android|windows|windows_phone|blackberry|roku|tizen|nacl|mac_osx|tvos|webplayer|ps4|xboxone|uwp_mobile|uwp_desktop|uwp_console|uwp_iot|uwp_surfacehub|webgl|xbox360|ps3|psm|vita|wiiu|samsung_tv|linux|watch_os) [0-9]{0,5}(\.[0-9]{0,5}){0,2}$/,
     required: true,
   },
   manufacturer: {

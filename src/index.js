@@ -91,7 +91,7 @@ class GameAnalytics {
       offset: 0,
       start: Math.round(Date.now() / 1000),
       data: {
-        user_id: user,
+        user_id: `${user}`,
         ip: data.ip,
         device: data.device || 'unknown',
         os_version: data.os_version,
@@ -146,7 +146,7 @@ class GameAnalytics {
     const userData = this.users[user];
 
     if (!userData) {
-      return;
+      return Promise.resolve();
     }
 
     // Calculate the session length.
@@ -175,12 +175,6 @@ class GameAnalytics {
    * @return {Promise}
    */
   track(type, user, data) {
-    // Verify the data.
-    if (!this._verify(type, data)) {
-      return;
-    }
-
-    // Queue up the request.
     return this._request(type, user, data);
   }
 
@@ -197,7 +191,7 @@ class GameAnalytics {
     Object.keys(params).forEach((key) => {
       // Check if a required property is missing.
       if (params[key].required && !data[key]) {
-        console.error(new Error(`Missing required property "${key}."`));
+        console.error(new Error(`Missing required property "${key}"`));
         valid = false;
         return;
       } else if (!data[key]) {
@@ -206,21 +200,21 @@ class GameAnalytics {
 
       // Check if enum values are contained in the list.
       if (params[key].enum && !params[key].enum.includes(data[key])) {
-        console.error(new Error(`Invalid value "${data[key]}" for property "${key}."`));
+        console.error(new Error(`Invalid value "${data[key]}" for property "${key}"`));
         valid = false;
         return;
       }
 
       // Check that the data is of the right type.
       if (typeof data[key] !== params[key].type) {
-        console.error(new Error(`Property "${key}" must be of type "${params[key].type}".`));
+        console.error(new Error(`Property "${key}" must be of type "${params[key].type}"`));
         valid = false;
         return;
       }
 
       // Verify the data if a pattern is specified.
-      if (params[key].pattern && !data[key].match(params[key].pattern)) {
-        console.error(new Error(`Invalid value supplied for property "${key}."`));
+      if (params[key].pattern && !params[key].pattern.test(`${data[key]}`)) {
+        console.error(new Error(`Invalid value supplied for property "${key}"`));
         valid = false;
       }
     });
@@ -262,8 +256,15 @@ class GameAnalytics {
     }
 
     // If this is a regular event, then just queue the data.
-    if (type !== 'init') {
+    if (!/init|user/.test(type)) {
+      // Verify the data.
+      if (!this._verify(type, body)) {
+        return;
+      }
+
+      // Add the data to the queue.
       this.users[user].events.push(body);
+
       return Promise.resolve();
     }
 
