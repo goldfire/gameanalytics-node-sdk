@@ -1,0 +1,30 @@
+{
+  "name": "gameanalytics-node-sdk",
+  "description": "Unofficial GameAnalytics Node.js SDK using the REST API.",
+  "homepage": "https://github.com/goldfire/gameanalytics-node-sdk",
+  "version": "1.0.0",
+  "keywords": [
+    "GameAnalytics",
+    "game analytics",
+    "analytics"
+  ],
+  "author": "James Simpson <james@goldfirestudios.com> (https://goldfirestudios.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goldfire/gameanalytics-node-sdk.git"
+  },
+  "scripts": {
+    "release": "VERSION=`printf 'v' && node -e 'console.log(require(\"./package.json\").version)'` && git tag $VERSION && git push && git push origin $VERSION && npm publish"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "pako": "^1.0.6",
+    "uuid": "^3.2.1",
+    "ua-parser-js": "^0.7.18"
+  },
+  "engines": [
+    "node >= 6.4.0"
+  ]
+}
