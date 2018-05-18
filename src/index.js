@@ -67,7 +67,7 @@ class GameAnalytics {
           data.platform = 'windows';
         } else if (uaData.os.name === 'iOS') {
           data.platform = 'ios';
-        } else if (uaData.os.name === 'Android') {
+        } else if (uaData.os.name === 'Android' || data.ua.includes('CrOS')) {
           data.platform = 'android';
         } else if (uaData.os.name === 'BlackBerry') {
           data.platform = 'blackberry';
@@ -77,6 +77,8 @@ class GameAnalytics {
           data.platform = 'tizen';
         } else if (data.ua.includes('Linux')) {
           data.platform = 'linux';
+        } else {
+          data.platform = 'unknown';
         }
       }
 
