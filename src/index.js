@@ -61,7 +61,7 @@ class GameAnalytics {
       
       // Set the platform.
       if (!data.platform) {
-        if (uaData.os.name === 'Windows' && uaData.device && uaData.device.type.match(/mobile|tablet/)) {
+        if (uaData.os.name === 'Windows' && uaData.device.type && uaData.device.type.match(/mobile|tablet/)) {
           data.platform = 'windows_phone';
         } else if (uaData.os.name === 'Windows') {
           data.platform = 'windows';
