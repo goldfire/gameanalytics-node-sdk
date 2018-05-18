@@ -137,6 +137,7 @@ class GameAnalytics {
         return {
           start: this.users[user].start,
           data: this.users[user].data,
+          offset: this.users[user].offset,
         };
       });
     });
