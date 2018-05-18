@@ -61,7 +61,7 @@ class GameAnalytics {
       
       // Set the platform.
       if (!data.platform) {
-        if (uaData.os.name === 'Windows' && uaData.device.type.match(/mobile|tablet/)) {
+        if (uaData.os.name === 'Windows' && uaData.device && uaData.device.type.match(/mobile|tablet/)) {
           data.platform = 'windows_phone';
         } else if (uaData.os.name === 'Windows') {
           data.platform = 'windows';
@@ -73,9 +73,9 @@ class GameAnalytics {
           data.platform = 'blackberry';
         } else if (uaData.os.name === 'Mac OS') {
           data.platform = 'mac_osx';
-        } else if (ua.includes('Tizen')) {
+        } else if (data.ua.includes('Tizen')) {
           data.platform = 'tizen';
-        } else if (ua.includes('Linux')) {
+        } else if (data.ua.includes('Linux')) {
           data.platform = 'linux';
         }
       }
