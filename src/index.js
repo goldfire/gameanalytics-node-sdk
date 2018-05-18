@@ -90,7 +90,7 @@ class GameAnalytics {
     this.users[user] = {
       offset: 0,
       start: Math.round(Date.now() / 1000),
-      data: {
+      data: JSON.parse(JSON.stringify({
         user_id: `${user}`,
         ip: data.ip,
         device: data.device || 'unknown',
@@ -116,7 +116,7 @@ class GameAnalytics {
         connection_type: data.connection_type,
         ios_idfa: data.ios_idfa,
         google_aid: data.google_aid,
-      },
+      })),
       events: [],
       interval: setInterval(() => {
         this._flush(user);
