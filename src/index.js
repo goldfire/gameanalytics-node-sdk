@@ -133,7 +133,12 @@ class GameAnalytics {
       this.users[user].offset = Math.round(Date.now() / 1000) - res.data.server_ts;
 
       // Send the user session start request.
-      return this._request('user', user)
+      return this._request('user', user).then(() => {
+        return {
+          start: this.users[user].start,
+          data: this.users[user].data,
+        };
+      });
     });
   }
 
