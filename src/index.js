@@ -84,7 +84,7 @@ class GameAnalytics {
 
       // Get the OS version.
       if (!data.os_version) {
-        data.os_version = `${data.platform} ${uaData.os.version}`;
+        data.os_version = `${data.platform} ${uaData.os.version || '0.0.0'}`;
       }
     }
 
