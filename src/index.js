@@ -131,6 +131,10 @@ class GameAnalytics {
       os_version: data.os_version,
       sdk_version: 'rest api v2',
     }).then((res) => {
+      if (!this.users[user]) {
+        return;
+      }
+      
       // Set the server time offset.
       this.users[user].offset = Math.round(Date.now() / 1000) - res.data.server_ts;
 
