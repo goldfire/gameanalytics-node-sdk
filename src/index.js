@@ -84,7 +84,9 @@ class GameAnalytics {
 
       // Get the OS version.
       if (!data.os_version) {
-        const version = (uaData.os.version || '0.0.0').replace('Vista', '6.0');
+        const version = (uaData.os.version || '0.0.0')
+          .replace('Vista', '6.0')
+          .replace('x86_64', '8.0'); // Hack to fix Chrome OS reporting until GA supports it.
         data.os_version = `${data.platform} ${version}`;
       }
     }

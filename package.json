@@ -2,7 +2,7 @@
   "name": "gameanalytics-node-sdk",
   "description": "Unofficial GameAnalytics Node.js SDK using the REST API.",
   "homepage": "https://github.com/goldfire/gameanalytics-node-sdk",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "keywords": [
     "GameAnalytics",
     "game analytics",
