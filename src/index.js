@@ -324,7 +324,7 @@ class GameAnalytics {
       data: body,
       headers,
     }).catch((res) => {
-      console.error(res.response.data[0].errors);
+      console.error(res && res.response ? res.response.data[0].errors : 'unknown response');
     });
   }
 }
