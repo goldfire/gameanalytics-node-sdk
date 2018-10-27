@@ -215,7 +215,7 @@ class GameAnalytics {
 
       // Check if enum values are contained in the list.
       if (params[key].enum && !params[key].enum.includes(data[key])) {
-        console.error(new Error(`Invalid value "${data[key]}" for property "${key}": ${data[key]}`));
+        console.error(new Error(`Invalid value "${data[key]}" for property "${key}"`));
         valid = false;
         return;
       }
@@ -229,7 +229,7 @@ class GameAnalytics {
 
       // Verify the data if a pattern is specified.
       if (params[key].pattern && !params[key].pattern.test(`${data[key]}`)) {
-        console.error(new Error(`Invalid value supplied for property "${key}"`));
+        console.error(new Error(`Invalid value "${data[key]}" supplied for property "${key}"`));
         valid = false;
       }
     });
