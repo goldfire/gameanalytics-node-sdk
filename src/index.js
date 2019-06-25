@@ -143,10 +143,12 @@ class GameAnalytics {
 
       // Send the user session start request.
       return this._request('user', user).then(() => {
+        const userData = this.users[user] || {};
+
         return {
-          start: this.users[user].start,
-          data: this.users[user].data,
-          offset: this.users[user].offset,
+          start: userData.start,
+          data: userData.data,
+          offset: userData.offset,
         };
       });
     });
