@@ -49,12 +49,12 @@ class GameAnalytics {
   }
 
   /**
-   * Start a new user session (this also handles calling init before any events are processed).
+   * Initialize the user data before sending the request to GameAnalytics.
+   * This data will be used for all tracking requests.
    * @param  {String} user User ID.
    * @param  {Object} data Data to send with the user event.
-   * @return {Promise}
    */
-  sessionStart(user, data) {
+  initUser(user, data) {
     // If the user agent was passed, use it to get platform details.
     if (data.ua) {
       const uaData = UAParser(data.ua);
@@ -127,6 +127,16 @@ class GameAnalytics {
         this._flush(user);
       }, 10000),
     };
+  }
+
+  /**
+   * Start a new user session (this also handles calling init before any events are processed).
+   * @param  {String} user User ID.
+   * @param  {Object} data Data to send with the user event.
+   * @return {Promise}
+   */
+  sessionStart(user, data) {
+    this.initUser(user, data);
 
     // Send the init request.
     return this._request('init', null, {
