@@ -286,7 +286,7 @@ class GameAnalytics {
     if (!/init|user/.test(type)) {
       // Verify the data.
       if (type !== 'session_end' && !this._verify(type, body)) {
-        return;
+        return Promise.resolve();
       }
 
       // Add the data to the queue.
