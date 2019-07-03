@@ -218,7 +218,7 @@ class GameAnalytics {
     Object.keys(params).forEach((key) => {
       // Check if a required property is missing.
       if (params[key].required && !data[key]) {
-        console.error(new Error(`Missing required property "${key}"`));
+        console.error(new Error(`Missing required property "${key}". ${JSON.stringify(data)}`));
         valid = false;
         return;
       } else if (!data[key]) {
@@ -227,21 +227,21 @@ class GameAnalytics {
 
       // Check if enum values are contained in the list.
       if (params[key].enum && !params[key].enum.includes(data[key])) {
-        console.error(new Error(`Invalid value "${data[key]}" for property "${key}"`));
+        console.error(new Error(`Invalid value "${data[key]}" for property "${key}".`));
         valid = false;
         return;
       }
 
       // Check that the data is of the right type.
       if (typeof data[key] !== params[key].type) {
-        console.error(new Error(`Property "${key}" must be of type "${params[key].type}"`));
+        console.error(new Error(`Property "${key}" must be of type "${params[key].type}".`));
         valid = false;
         return;
       }
 
       // Verify the data if a pattern is specified.
       if (params[key].pattern && !params[key].pattern.test(`${data[key]}`)) {
-        console.error(new Error(`Invalid value "${data[key]}" supplied for property "${key}"`));
+        console.error(new Error(`Invalid value "${data[key]}" supplied for property "${key}".`));
         valid = false;
       }
     });
