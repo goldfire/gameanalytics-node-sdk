@@ -1,6 +1,6 @@
 /**
  * gameanalytics-node-sdk
- * Copyright (c) 2018, GoldFire Studios, Inc.
+ * Copyright (c) 2018-2020, GoldFire Studios, Inc.
  * https://goldfirestudios.com
  */
 
@@ -326,7 +326,7 @@ class GameAnalytics {
       'Authorization': auth,
     };
     if (ip) {
-      headers['X-Forward-For'] = ip;
+      headers['X-Forwarded-For'] = ip;
     }
 
     // Send the request and get the response in a promise.
