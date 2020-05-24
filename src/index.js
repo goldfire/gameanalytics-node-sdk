@@ -302,13 +302,12 @@ class GameAnalytics {
    * Send a request to the GameAnaltyics service.
    * Also, gzip the data and generate the auth token.
    * @param  {String} type 'init' or type of event.
-   * @param  {Object} body Body data to send with the request.
+   * @param  {Array} body Array of body data to send with the request.
    * @return {Promise}
    */
   _makeRequest(type, body) {
     // Extract the IP from the body.
-    const ip = body.ip;
-    delete body.ip;
+    const ip = body[0].ip;
 
     // Gzip the body data.
     body = pako.gzip(JSON.stringify(body));
